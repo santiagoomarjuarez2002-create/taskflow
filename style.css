@@ -1,0 +1,280 @@
+
+/* 1. Variables CSS */
+:root {
+    --color-principal: #5b4bdb;
+    --color-secundario: #4033a8;
+    --color-fondo: #f4f5fb;
+    --color-tarjeta: #ffffff;
+    --color-texto: #25263a;
+    --color-texto-suave: #686b80;
+    --color-borde: #e1e3ee;
+    --color-pendiente: #fff0d6;
+    --color-completada: #d9f7e8;
+    --espaciado: 1rem;
+}
+
+/* 2. Box Model */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* 3. Encabezado con Flexbox */
+.encabezado {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.encabezado h1 {
+    font-size: 1.8rem;
+}
+
+.navegacion {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.navegacion a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navegacion a:hover {
+    text-decoration: underline;
+}
+
+/* 4. Presentación */
+.presentacion {
+    min-height: 45vh;
+    padding: 4rem 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #e8e5ff, #f4f5fb);
+}
+
+.presentacion h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-principal);
+}
+
+.presentacion p {
+    color: var(--color-texto-suave);
+    font-size: 1.1rem;
+}
+
+.boton {
+    display: inline-block;
+    background-color: var(--color-principal);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.boton:hover {
+    background-color: var(--color-secundario);
+}
+
+/* 5. Sección de tareas */
+.seccion-tareas {
+    padding: 4rem 5%;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.seccion-tareas h2,
+.contacto h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.descripcion {
+    color: var(--color-texto-suave);
+    margin-bottom: 2rem;
+}
+
+/* 6. Tarjetas con CSS Grid */
+.lista-tareas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.tarjeta {
+    background-color: var(--color-tarjeta);
+    padding: 1.5rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(30, 35, 70, 0.08);
+    min-width: 0;
+    overflow-wrap: anywhere;
+    transition: transform 0.2s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+}
+
+.tarjeta h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.tarjeta p {
+    color: var(--color-texto-suave);
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.tarea-pendiente .etiqueta {
+    background-color: var(--color-pendiente);
+    color: #865400;
+}
+
+.tarea-completada .etiqueta {
+    background-color: var(--color-completada);
+    color: #176b48;
+}
+
+/* 7. Contacto */
+.contacto {
+    padding: 3rem 5%;
+    text-align: center;
+    background-color: #e8e5ff;
+}
+
+.contacto p {
+    margin-top: 0.5rem;
+}
+
+/* 8. Pie de página */
+.pie-pagina {
+    background-color: var(--color-texto);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+/* 9. Responsive: tablets */
+@media (max-width: 900px) {
+    .lista-tareas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .encabezado {
+        padding: 1rem 4%;
+    }
+
+    .navegacion {
+        gap: 1rem;
+    }
+}
+
+/* 10. Responsive: celulares */
+@media (max-width: 600px) {
+    .encabezado {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navegacion {
+        justify-content: center;
+        gap: 0.75rem 1rem;
+    }
+
+    .presentacion {
+        min-height: 35vh;
+        padding: 3rem 5%;
+    }
+
+    .seccion-tareas {
+        padding: 2.5rem 5%;
+    }
+
+    .lista-tareas {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta {
+        padding: 1.25rem;
+    }
+
+    .seccion-tareas h2,
+    .contacto h2 {
+        font-size: 1.6rem;
+    }
+}
+/* Calendario */
+.calendario {
+    padding: 3rem 5%;
+    text-align: center;
+    min-height: 40vh;
+}
+
+.calendario h2 {
+    color: var(--color-principal);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.calendario p {
+    color: var(--color-texto-suave);
+    margin-bottom: 1.5rem;
+}
+
+.contenedor-calendario {
+    background-color: var(--color-tarjeta);
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(30, 35, 70, 0.08);
+}
+
+.contenedor-calendario label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.contenedor-calendario input {
+    max-width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 0.5rem;
+    font: inherit;
+}

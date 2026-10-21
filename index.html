@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Gestor de Tareas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="encabezado">
+        <h1>TaskFlow</h1>
+
+        <nav class="navegacion">
+            <a href="#inicio">Inicio</a>
+            <a href="#tareas">Mis tareas</a>
+            <a href="#calendario">Calendario</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="presentacion">
+            <h2>Bienvenido a TaskFlow</h2>
+            <p>Organizá tus tareas de manera fácil y rápida.</p>
+            <a href="#tareas" class="boton">Ver mis tareas</a>
+        </section>
+
+        <section id="tareas" class="seccion-tareas">
+            <h2>Mis tareas</h2>
+            <p class="descripcion">Organizá tus actividades y seguí tu progreso.</p>
+
+            <div class="lista-tareas">
+                <article class="tarjeta tarea-pendiente">
+                    <span class="etiqueta">Pendiente</span>
+                    <h3>Estudiar programación</h3>
+                    <p>Repasar los contenidos de la materia.</p>
+                </article>
+
+                <article class="tarjeta tarea-completada">
+                    <span class="etiqueta">Completada</span>
+                    <h3>Realizar trabajo práctico</h3>
+                    <p>Actividad finalizada correctamente.</p>
+                </article>
+
+                <article class="tarjeta tarea-pendiente">
+                    <span class="etiqueta">Pendiente</span>
+                    <h3>Preparar el examen</h3>
+                    <p>Organizar los temas para estudiar.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="calendario" class="calendario">
+                <h2>Mi calendario</h2>
+                <p>Organizá tus tareas y fechas importantes.</p>
+
+            <div class="contenedor-calendario">
+                <label for="fecha">Seleccioná una fecha:</label>
+                <input type="date" id="fecha" name="fecha">
+            </div>
+        </section>
+
+        <section id="contacto" class="contacto">
+            
+            <p>Gracias por utilizar TaskFlow.</p>
+            <p>Proyecto de Programación Web.</p>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <p>TaskFlow - Proyecto de Programación</p>
+    </footer>
+
+</body>
+</html>
