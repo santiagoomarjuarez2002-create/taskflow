@@ -4,18 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow - Gestor de Tareas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
+    <meta name="description" content="TaskFlow te ayuda a organizar tus tareas, establecer fechas límite y seguir tu progreso.">
+
+    <title>TaskFlow | Gestor de tareas</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
     <header class="encabezado">
         <h1>TaskFlow</h1>
 
         <nav class="navegacion">
             <a href="#inicio">Inicio</a>
             <a href="#tareas">Mis tareas</a>
-            <a href="#calendario">Calendario</a>
+            <a href="#" id="abrir-calendario">Calendario</a>
         </nav>
     </header>
 
@@ -28,49 +33,60 @@
 
         <section id="tareas" class="seccion-tareas">
             <h2>Mis tareas</h2>
-            <p class="descripcion">Organizá tus actividades y seguí tu progreso.</p>
+            <p class="descripcion">
+                Organizá tus actividades y seguí tu progreso.
+            </p>
 
-            <div class="lista-tareas">
-                <article class="tarjeta tarea-pendiente">
-                    <span class="etiqueta">Pendiente</span>
-                    <h3>Estudiar programación</h3>
-                    <p>Repasar los contenidos de la materia.</p>
-                </article>
+            <form id="formulario-tarea">
+                <div>
+                    <label for="nombre-tarea">Nombre de la tarea:</label>
+                    <input
+                        type="text"
+                        id="nombre-tarea"
+                        placeholder="Ej.: Estudiar programación"
+                        required
+                    >
+                </div>
 
-                <article class="tarjeta tarea-completada">
-                    <span class="etiqueta">Completada</span>
-                    <h3>Realizar trabajo práctico</h3>
-                    <p>Actividad finalizada correctamente.</p>
-                </article>
+                <div>
+                    <label for="descripcion-tarea">Descripción:</label>
+                    <input
+                        type="text"
+                        id="descripcion-tarea"
+                        placeholder="Descripción de la tarea"
+                    >
+                </div>
 
-                <article class="tarjeta tarea-pendiente">
-                    <span class="etiqueta">Pendiente</span>
-                    <h3>Preparar el examen</h3>
-                    <p>Organizar los temas para estudiar.</p>
-                </article>
-            </div>
-        </section>
+                <div>
+                    <label for="fecha-limite">Fecha límite:</label>
+                    <input type="date" id="fecha-limite">
+                </div>
 
-        <section id="calendario" class="calendario">
-                <h2>Mi calendario</h2>
-                <p>Organizá tus tareas y fechas importantes.</p>
+                <button type="submit" class="boton">
+                    Agregar tarea
+                </button>
+            </form>
 
-            <div class="contenedor-calendario">
-                <label for="fecha">Seleccioná una fecha:</label>
-                <input type="date" id="fecha" name="fecha">
-            </div>
+            <p id="mensaje-tareas" aria-live="polite"></p>
+
+            <div class="lista-tareas" id="lista-tareas"></div>
         </section>
 
         <section id="contacto" class="contacto">
-            
             <p>Gracias por utilizar TaskFlow.</p>
             <p>Proyecto de Programación Web.</p>
         </section>
+
+        <input
+            type="date"
+            id="calendario-principal"
+            aria-label="Seleccionar una fecha en el calendario"
+            tabindex="-1"
+        >
     </main>
 
     <footer class="pie-pagina">
         <p>TaskFlow - Proyecto de Programación</p>
     </footer>
-
 </body>
 </html>
