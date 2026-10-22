@@ -1,4 +1,3 @@
-
 const formulario = document.getElementById("formulario-tarea");
 const nombreTarea = document.getElementById("nombre-tarea");
 const descripcionTarea = document.getElementById("descripcion-tarea");
@@ -21,10 +20,6 @@ function formatearFecha(fecha) {
 botonCalendario.addEventListener("click", function (evento) {
     evento.preventDefault();
 
-    const posicionBoton = botonCalendario.getBoundingClientRect();
-    calendarioPrincipal.style.left = `${posicionBoton.left}px`;
-    calendarioPrincipal.style.top = `${posicionBoton.bottom}px`;
-
     if (typeof calendarioPrincipal.showPicker === "function") {
         calendarioPrincipal.showPicker();
     } else {
@@ -45,6 +40,9 @@ formulario.addEventListener("submit", function (evento) {
         nombreTarea.focus();
         return;
     }
+
+    const columna = document.createElement("div");
+    columna.classList.add("col-12", "col-md-6", "col-lg-4");
 
     const tarjeta = document.createElement("article");
     tarjeta.classList.add("tarjeta", "tarea-pendiente");
@@ -84,7 +82,8 @@ formulario.addEventListener("submit", function (evento) {
         botonEliminar
     );
 
-    listaTareas.appendChild(tarjeta);
+    columna.appendChild(tarjeta);
+    listaTareas.appendChild(columna);
 
     formulario.reset();
     nombreTarea.focus();
@@ -121,14 +120,14 @@ listaTareas.addEventListener("click", function (evento) {
     }
 
     if (boton.classList.contains("boton-eliminar")) {
-        const tarjeta = boton.closest(".tarjeta");
-        const titulo = tarjeta.querySelector("h3").textContent;
+        const columna = boton.closest(".col-12");
+        const titulo = columna.querySelector("h3").textContent;
 
-        tarjeta.remove();
+        columna.remove();
         mensajeTareas.textContent = `Se eliminó la tarea: ${titulo}.`;
     }
 
-    if (listaTareas.querySelectorAll(".tarjeta").length === 0) {
+    if (listaTareas.children.length === 0) {
         mensajeTareas.textContent = "No hay tareas. ¡Agregá una nueva!";
     }
 });
