@@ -4,73 +4,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="TaskFlow te ayuda a organizar tus tareas, administrar tus actividades y recordar fechas importantes.">
+    <meta name="author" content="Equipo TaskFlow">
+
     <title>TaskFlow - Gestor de Tareas</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark encabezado">
+            <div class="container">
+                <a class="navbar-brand fw-bold fs-3" href="#inicio">
+                    TaskFlow
+                </a>
 
-    <header class="encabezado">
-        <h1>TaskFlow</h1>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal"
+                    aria-expanded="false"
+                    aria-label="Abrir o cerrar menú"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <nav class="navegacion">
-            <a href="#inicio">Inicio</a>
-            <a href="#tareas">Mis tareas</a>
-            <a href="#calendario">Calendario</a>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto gap-md-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#inicio">Inicio</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tareas">Mis tareas</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#calendario">Calendario</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section id="inicio" class="presentacion">
-            <h2>Bienvenido a TaskFlow</h2>
-            <p>Organizá tus tareas de manera fácil y rápida.</p>
-            <a href="#tareas" class="boton">Ver mis tareas</a>
-        </section>
 
-        <section id="tareas" class="seccion-tareas">
-            <h2>Mis tareas</h2>
-            <p class="descripcion">Organizá tus actividades y seguí tu progreso.</p>
+        <section
+            id="inicio"
+            class="presentacion text-center d-flex flex-column justify-content-center align-items-center"
+        >
+            <div class="container py-5">
+                <h1 class="display-4 fw-bold">
+                    Bienvenido a TaskFlow
+                </h1>
 
-            <div class="lista-tareas">
-                <article class="tarjeta tarea-pendiente">
-                    <span class="etiqueta">Pendiente</span>
-                    <h3>Estudiar programación</h3>
-                    <p>Repasar los contenidos de la materia.</p>
-                </article>
+                <p class="lead mt-3">
+                    Organizá tus tareas de manera fácil y rápida.
+                </p>
 
-                <article class="tarjeta tarea-completada">
-                    <span class="etiqueta">Completada</span>
-                    <h3>Realizar trabajo práctico</h3>
-                    <p>Actividad finalizada correctamente.</p>
-                </article>
-
-                <article class="tarjeta tarea-pendiente">
-                    <span class="etiqueta">Pendiente</span>
-                    <h3>Preparar el examen</h3>
-                    <p>Organizar los temas para estudiar.</p>
-                </article>
+                <a href="#tareas" class="btn btn-primary btn-lg mt-3">
+                    Ver mis tareas
+                </a>
             </div>
         </section>
 
-        <section id="calendario" class="calendario">
-                <h2>Mi calendario</h2>
-                <p>Organizá tus tareas y fechas importantes.</p>
+        <section id="tareas" class="container py-5">
+            <div class="text-center mb-4">
+                <h2 class="display-6 fw-bold">Mis tareas</h2>
 
-            <div class="contenedor-calendario">
-                <label for="fecha">Seleccioná una fecha:</label>
-                <input type="date" id="fecha" name="fecha">
+                <p class="text-secondary">
+                    Organizá tus actividades y seguí tu progreso.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <span class="badge text-bg-warning mb-3">
+                                Pendiente
+                            </span>
+
+                            <h3 class="card-title h5">
+                                Estudiar programación
+                            </h3>
+
+                            <p class="card-text text-secondary">
+                                Repasar los contenidos de la materia.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <span class="badge text-bg-success mb-3">
+                                Completada
+                            </span>
+
+                            <h3 class="card-title h5">
+                                Realizar trabajo práctico
+                            </h3>
+
+                            <p class="card-text text-secondary">
+                                Actividad finalizada correctamente.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <span class="badge text-bg-warning mb-3">
+                                Pendiente
+                            </span>
+
+                            <h3 class="card-title h5">
+                                Preparar el examen
+                            </h3>
+
+                            <p class="card-text text-secondary">
+                                Organizar los temas para estudiar.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
             </div>
         </section>
 
-        <section id="contacto" class="contacto">
-            
-            <p>Gracias por utilizar TaskFlow.</p>
-            <p>Proyecto de Programación Web.</p>
+        <section id="calendario" class="container py-5">
+            <div class="text-center mb-4">
+                <h2 class="display-6 fw-bold">Mi calendario</h2>
+
+                <p class="text-secondary">
+                    Organizá tus tareas y fechas importantes.
+                </p>
+            </div>
+
+            <div
+                class="card shadow-sm border-0 mx-auto"
+                style="max-width: 450px;"
+            >
+                <div class="card-body p-4">
+                    <label
+                        for="fecha"
+                        class="form-label fw-semibold"
+                    >
+                        Seleccioná una fecha:
+                    </label>
+
+                    <input
+                        type="date"
+                        id="fecha"
+                        name="fecha"
+                        class="form-control"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="py-4 text-center">
+            <div class="container">
+                <p class="mb-2">
+                    Gracias por utilizar TaskFlow.
+                </p>
+
+                <p class="mb-0 text-secondary">
+                    Proyecto de Programación Web.
+                </p>
+            </div>
         </section>
     </main>
 
-    <footer class="pie-pagina">
-        <p>TaskFlow - Proyecto de Programación</p>
+    <footer class="bg-dark text-white text-center py-4 mt-4">
+        <div class="container">
+            <p class="mb-0">
+                TaskFlow - Proyecto de Programación Web
+            </p>
+        </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
