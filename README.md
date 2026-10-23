@@ -1,4 +1,4 @@
-# TaskFlow
+﻿# TaskFlow
 
 ## Integrantes
 
@@ -7,20 +7,19 @@
 
 ## Descripción del proyecto
 
-TaskFlow es una página web para organizar tareas de manera sencilla.
-Permite agregar tareas con nombre, descripción y fecha límite,tambien podemos marcarlas como completadas o pendientes y eliminarlas.
-Las tareas no se guardan de forma permanente: al recargar la página se pierden.
+TaskFlow permite agregar tareas con nombre, descripción y fecha límite, marcarlas como completadas o pendientes y eliminarlas. Las tareas no se guardan de forma permanente: al recargar la página se pierden. No se utiliza una base de datos ni localStorage.
 
 ## Tecnologías utilizadas
 
-- HTML
-- CSS
-- JavaScript
-- Git y GitHub
-- Visual Studio Code
+- HTML para la estructura y JavaScript para la interacción.
+- Bootstrap 5.3.8 para componentes, distribución y utilidades de estilos.
+- CSS para personalizar colores, fondos y controles.
+- Git y GitHub para el control de versiones.
+- Visual Studio Code como editor.
 
 ## Estructura del proyecto
 
+```text
 taskflow/
 ├── img/
 │   └── .gitkeep
@@ -28,112 +27,95 @@ taskflow/
 ├── style.css
 ├── script.js
 └── README.md
+```
 
-La carpeta img está preparada para incorporar imágenes. El archivo .gitkeep permite conservar la carpeta en Git aunque no tenga imágenes.
+La carpeta img está preparada para incorporar imágenes. .gitkeep permite conservarla en Git aunque no tenga imágenes.
 
-## ¿Dónde utilizamos Flexbox?
+## Funcionamiento del JavaScript
 
-Utilizamos Flexbox en el encabezado, mediante la clase .encabezado, para distribuir el título y el menú de navegación.
+script.js se carga con defer: se ejecuta después de procesar el HTML.
 
-También lo utilizamos en .navegacion para organizar los enlaces.
+### Selección de elementos
 
-Aplicamos propiedades como:
+document.getElementById() obtiene referencias al formulario, sus campos, la lista de tareas, el espacio de mensajes y los controles del calendario. Estas referencias permiten leer los datos y modificar la página.
 
-- display: flex.
-- justify-content.
-- align-items.
-- flex-wrap.
-- flex-direction.
-- gap.
+### Formato de fechas
 
-## ¿Dónde utilizamos CSS Grid?
+formatearFecha(fecha) separa la fecha con split() usando el guion como separador y transforma AAAA-MM-DD en DD/MM/AAAA. Si no se eligió una fecha, devuelve Sin fecha límite.
 
-Utilizamos Grid en .lista-tareas para distribuir las tarjetas.
+### Calendario del menú
 
-La cantidad de columnas se adapta automáticamente al espacio disponible mediante:
+Al hacer clic en Calendario, preventDefault() evita la navegación del enlace. getBoundingClientRect() obtiene su posición para ubicar el campo de fecha invisible debajo del enlace.
 
-grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+El código usa showPicker() si el navegador dispone de ese método. En caso contrario, intenta abrirlo con focus() y click(); el resultado depende del navegador.
 
-También utilizamos gap para separar las tarjetas.
+Este calendario es independiente de la fecha del formulario: no filtra tareas ni modifica sus fechas.
 
-## ¿Qué variables CSS creamos?
+### Creación de tareas
 
-Definimos estas variables dentro de :root:
+El evento submit del formulario realiza estos pasos:
 
-- --color-principal.
-- --color-secundario.
-- --color-fondo.
-- --color-texto.
-- --color-blanco.
-- --color-verde.
-- --color-rojo.
+1. Evita recargar la página mediante preventDefault().
+2. Lee nombre, descripción y fecha. trim() quita espacios al principio y al final del nombre y la descripción.
+3. Si el nombre queda vacío, muestra un mensaje, devuelve el foco al campo y detiene la creación. El HTML también incluye required.
+4. Crea un article con document.createElement() y le agrega clases de Bootstrap.
+5. Guarda el estado inicial en dataset.estado, con el valor pendiente, y la fecha en dataset.fechaLimite.
+6. Crea la etiqueta de estado, el título, la descripción, la fecha y los botones de completar y eliminar.
+7. Inserta la tarjeta en la lista, limpia el formulario con reset() y devuelve el foco al nombre.
+8. Muestra un mensaje de confirmación.
 
-Las reutilizamos mediante var() para aplicar colores en fondos, textos, botones y bordes.
+Descripción y fecha son opcionales: si faltan, se muestran Sin descripción. y Sin fecha límite.
 
-## ¿Cómo implementamos el Responsive Design?
+Los textos se insertan con textContent, por lo que lo escrito por el usuario se muestra como texto y no se interpreta como HTML.
 
-Utilizamos:
+### Cambio de estado y eliminación
 
-- La etiqueta meta viewport en el HTML.
-- Flexbox con flex-wrap para permitir que los elementos pasen a otra línea.
-- Grid para adaptar las columnas de tareas al espacio disponible.
-- Una Media Query de hasta 600px para colocar el encabezado en columna y reducir los espaciados.
-- Anchos porcentuales y max-width para adaptar los campos y limitar el ancho del contenido.
-- clamp() con rem y vw para adaptar el tamaño del título principal de la presentación.
+Un único evento click en listaTareas atiende los botones de todas las tarjetas, incluidas las nuevas. Esta técnica se llama delegación de eventos.
 
-## Box Model y unidades
+- **Cambiar estado:** closest() con la clase tarjeta encuentra la tarjeta del botón. Se actualiza dataset.estado, se intercambian las clases amarillas y verdes con classList.replace() y se cambian la etiqueta y el texto del botón. Una tarea completada puede volver a pendiente.
+- **Eliminar:** se obtiene el nombre de la tarea y se elimina la tarjeta con remove().
+- **Lista vacía:** si no quedan tarjetas después de un clic en la lista, se muestra No hay tareas. ¡Agregá una nueva!.
 
-Aplicamos margin, padding, border y box-sizing: border-box.
+Los mensajes se escriben en un elemento con aria-live con el valor polite, para que las tecnologías de asistencia puedan anunciar los cambios.
 
-Utilizamos diferentes unidades:
+## Diseño y Bootstrap
 
-- px para bordes, espaciados y anchos máximos.
-- % para anchos y espaciados.
-- rem para tamaños de texto.
-- vh para la altura mínima del body.
-- vw para el tamaño adaptable del título.
-- fr para distribuir el espacio de las columnas de Grid.
+La página usa el tema oscuro con data-bs-theme con el valor dark. style.css personaliza variables de Bootstrap como --bs-primary-rgb, --bs-body-bg, --bs-body-color, --bs-secondary-color y --bs-border-color. También define colores para los botones, fondos con degradados y estilos de foco para los campos.
 
-También incorporamos tipografía Arial, colores, bordes redondeados y sombras.
+### Flexbox y distribución
+
+- La navegación utiliza navbar y utilidades como order y ms-auto.
+- Las tareas se apilan verticalmente con vstack y gap-3.
+- Los botones de cada tarjeta usan d-flex, flex-wrap y gap-2.
+- El formulario utiliza las columnas de Bootstrap: row, col-12 y col-md-6.
+
+La versión actual no define una cuadrícula propia de CSS Grid para las tareas.
+
+### Responsive Design
+
+- meta viewport adapta la página al ancho del dispositivo.
+- navbar-expand-md permite contraer el menú en pantallas pequeñas. Su apertura depende del JavaScript de Bootstrap.
+- col-12 col-md-6 coloca descripción y fecha en una columna en pantallas pequeñas y en dos a partir del tamaño md de Bootstrap.
+- d-grid d-md-block adapta la distribución del botón del formulario.
+- Bootstrap gestiona los contenedores y espaciados. El CSS propio actual no incluye media queries.
 
 ## HTML semántico
 
-Utilizamos las etiquetas:
-
-- header.
-- nav.
-- main.
-- section.
-- footer.
-
-Cada tarea se representa mediante un article creado desde JavaScript.
-
-## Funcionalidades
-
-- Agregar tareas con nombre, descripción y fecha límite.
-- Marcar tareas como completadas.
-- Volver a marcar tareas como pendientes.
-- Eliminar tareas.
-- Abrir un selector de fechas desde el menú.
-- Mostrar mensajes de confirmación.
-
-El selector de fechas del menú no filtra las tareas.
+Se utilizan header, nav, main, section y footer. Cada tarea es un article creado desde JavaScript. Los campos tienen etiquetas label asociadas.
 
 ## Organización con Git y GitHub
 
-El proyecto utiliza el siguiente flujo de trabajo:
+El flujo de trabajo propuesto utiliza main para la versión final, dev para integrar el desarrollo y ramas feature para cambios específicos. Se utilizan commits descriptivos, push, Pull Requests y merge para compartir y revisar cambios.
 
-- main para la versión final.
-- dev para integrar el desarrollo.
-- Ramas feature para trabajar en cambios específicos.
-- Commits con mensajes descriptivos.
-- Push para subir los cambios.
-- Pull Requests para solicitar la revisión de un compañero.
-- Merge para integrar los cambios revisados.
+## Cómo ejecutar y comprobar el proyecto
 
-## Cómo ejecutar el proyecto
+1. Descargar o clonar el repositorio y abrirlo en Visual Studio Code.
+2. Abrir index.html en un navegador o utilizar Live Server. No requiere instalación de paquetes ni compilación.
+3. Crear una tarea con nombre, descripción y fecha, y comprobar el formato de la fecha.
+4. Crear otra sin descripción ni fecha para comprobar los textos predeterminados.
+5. Marcar una tarea como completada y volver a marcarla como pendiente.
+6. Eliminar todas las tareas y comprobar el mensaje de lista vacía.
+7. Abrir el calendario y probar el menú en una pantalla pequeña.
+8. Recargar la página para comprobar que las tareas no se conservan.
 
-1. Descargar o clonar el repositorio.
-2. Abrir la carpeta del proyecto en Visual Studio Code.
-3. Abrir index.html en el navegador o utilizar Live Server.
-4. Agregar tareas para probar las funcionalidades.
+Bootstrap se descarga desde un CDN: se necesita conexión a Internet para cargar sus estilos y su JavaScript.

@@ -1,4 +1,3 @@
-
 const formulario = document.getElementById("formulario-tarea");
 const nombreTarea = document.getElementById("nombre-tarea");
 const descripcionTarea = document.getElementById("descripcion-tarea");
@@ -22,6 +21,7 @@ botonCalendario.addEventListener("click", function (evento) {
     evento.preventDefault();
 
     const posicionBoton = botonCalendario.getBoundingClientRect();
+
     calendarioPrincipal.style.left = `${posicionBoton.left}px`;
     calendarioPrincipal.style.top = `${posicionBoton.bottom}px`;
 
@@ -47,41 +47,70 @@ formulario.addEventListener("submit", function (evento) {
     }
 
     const tarjeta = document.createElement("article");
-    tarjeta.classList.add("tarjeta", "tarea-pendiente");
+    tarjeta.classList.add(
+        "tarjeta",
+        "card",
+        "p-4",
+        "shadow-sm",
+        "rounded-4",
+        "text-break",
+        "border-warning"
+    );
     tarjeta.dataset.estado = "pendiente";
     tarjeta.dataset.fechaLimite = fecha;
 
     const etiqueta = document.createElement("span");
-    etiqueta.classList.add("etiqueta");
+    etiqueta.classList.add(
+        "etiqueta",
+        "badge",
+        "text-bg-warning",
+        "align-self-start"
+    );
     etiqueta.textContent = "Pendiente";
 
     const titulo = document.createElement("h3");
+    titulo.classList.add("h5", "mt-3", "mb-2");
     titulo.textContent = nombre;
 
     const texto = document.createElement("p");
     texto.textContent = descripcion || "Sin descripción.";
 
     const fechaTarea = document.createElement("p");
-    fechaTarea.classList.add("fecha-tarea");
+    fechaTarea.classList.add("small", "text-body-secondary");
     fechaTarea.textContent = `Fecha límite: ${formatearFecha(fecha)}`;
 
     const botonEstado = document.createElement("button");
     botonEstado.type = "button";
-    botonEstado.classList.add("boton-estado");
+    botonEstado.classList.add("boton-estado", "btn", "btn-success", "rounded-3", "px-3", "py-2");
     botonEstado.textContent = "Marcar como completada";
 
     const botonEliminar = document.createElement("button");
     botonEliminar.type = "button";
-    botonEliminar.classList.add("boton-eliminar");
+    botonEliminar.classList.add(
+        "boton-eliminar",
+        "btn",
+        "btn-outline-danger",
+        "rounded-3",
+        "px-3",
+        "py-2"
+    );
     botonEliminar.textContent = "Eliminar";
+
+    const acciones = document.createElement("div");
+    acciones.classList.add(
+        "d-flex",
+        "flex-wrap",
+        "gap-2",
+        "mt-auto"
+    );
+    acciones.append(botonEstado, botonEliminar);
 
     tarjeta.append(
         etiqueta,
         titulo,
         texto,
         fechaTarea,
-        botonEstado,
-        botonEliminar
+        acciones
     );
 
     listaTareas.appendChild(tarjeta);
@@ -101,8 +130,16 @@ listaTareas.addEventListener("click", function (evento) {
 
         if (tarjeta.dataset.estado === "pendiente") {
             tarjeta.dataset.estado = "completada";
-            tarjeta.classList.remove("tarea-pendiente");
-            tarjeta.classList.add("tarea-completada");
+
+            tarjeta.classList.replace(
+                "border-warning",
+                "border-success"
+            );
+
+            etiqueta.classList.replace(
+                "text-bg-warning",
+                "text-bg-success"
+            );
 
             etiqueta.textContent = "Completada";
             boton.textContent = "Marcar como pendiente";
@@ -110,8 +147,16 @@ listaTareas.addEventListener("click", function (evento) {
             mensajeTareas.textContent = "Tarea marcada como completada.";
         } else {
             tarjeta.dataset.estado = "pendiente";
-            tarjeta.classList.remove("tarea-completada");
-            tarjeta.classList.add("tarea-pendiente");
+
+            tarjeta.classList.replace(
+                "border-success",
+                "border-warning"
+            );
+
+            etiqueta.classList.replace(
+                "text-bg-success",
+                "text-bg-warning"
+            );
 
             etiqueta.textContent = "Pendiente";
             boton.textContent = "Marcar como completada";

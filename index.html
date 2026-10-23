@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -11,120 +11,122 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
     <script src="script.js" defer></script>
-    
+
 </head>
 
-<body>
+<body class="min-vh-100">
     <header>
-    <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
-        <div class="container">
-            <h1 class="navbar-brand mb-0">
-                <a href="#inicio" class="text-white text-decoration-none">
-                    TaskFlow
-                </a>
-            </h1>
+        <!-- Bootstrap: order y ms-auto ubican la marca a la derecha y el menu a la izquierda. -->
+        <nav class="navbar navbar-expand-md navegacion-principal border-bottom py-3" data-bs-theme="dark">
+            <div class="container">
+                <h1 class="navbar-brand fs-3 mb-0 order-2 ms-auto me-0 ps-4 fw-bold">
+                    <a href="#inicio" class="text-decoration-none text-primary">
+                        TaskFlow
+                    </a>
+                </h1>
 
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#menuPrincipal"
-                aria-controls="menuPrincipal"
-                aria-expanded="false"
-                aria-label="Abrir o cerrar menú"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false"
+                    aria-label="Abrir o cerrar menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="menuPrincipal">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#inicio">Inicio</a>
-                    </li>
+                <div class="collapse navbar-collapse order-3 order-md-1 flex-grow-0" id="menuPrincipal">
+                    <ul class="navbar-nav gap-2 pt-3 pt-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-body px-3 py-2 rounded-3 fw-semibold" href="#inicio">Inicio</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tareas">Mis tareas</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body px-3 py-2 rounded-3 fw-semibold" href="#tareas">Mis tareas</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="abrir-calendario">
-                            Calendario
-                        </a>
-                    </li>
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-body px-3 py-2 rounded-3 fw-semibold" href="#"
+                                id="abrir-calendario">
+                                Calendario
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
     <main>
-        <section id="inicio" class="presentacion">
-            <h2>Bienvenido a TaskFlow</h2>
-            <p>Organizá tus tareas de manera fácil y rápida.</p>
-            <a href="#tareas" class="boton">Ver mis tareas</a>
+        <section id="inicio" class="presentacion text-center border-bottom p-5">
+            <h2 class="display-4 fw-bold mt-0 mb-4">Bienvenido a TaskFlow</h2>
+            <p class="text-body-secondary fs-5 mb-4">Organizá tus tareas de manera fácil y rápida.</p>
+            <a href="#tareas" class="btn btn-primary rounded-3 fw-bold px-4 py-3">Ver mis tareas</a>
         </section>
 
-        <section id="tareas" class="seccion-tareas">
-            <h2>Mis tareas</h2>
-            <p class="descripcion">
+
+        <section id="tareas" class="container my-5 px-4">
+            <h2 class="display-6 text-primary fw-bold mb-3">Mis tareas</h2>
+            <p class="text-body-secondary fs-5 mb-4">
                 Organizá tus actividades y seguí tu progreso.
             </p>
 
-            <form id="formulario-tarea">
-                <div>
-                    <label for="nombre-tarea">Nombre de la tarea:</label>
-                    <input type="text" id="nombre-tarea" placeholder="Ej.: Estudiar programación" required>
-                </div>
+            <form id="formulario-tarea" class="border rounded-4 shadow p-4 my-4">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <label class="form-label fw-bold" for="nombre-tarea">Nombre de la tarea:</label>
+                        <input class="form-control rounded-3 px-3 py-3" type="text" id="nombre-tarea"
+                            placeholder="Ej.: Estudiar programación" required>
+                    </div>
 
-                <div>
-                    <label for="descripcion-tarea">Descripción:</label>
-                    <input type="text" id="descripcion-tarea" placeholder="Descripción de la tarea">
-                </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-bold" for="descripcion-tarea">Descripción:</label>
+                        <input class="form-control rounded-3 px-3 py-3" type="text" id="descripcion-tarea"
+                            placeholder="Descripción de la tarea">
+                    </div>
 
-                <div>
-                    <label for="fecha-limite">Fecha límite:</label>
-                    <input type="date" id="fecha-limite">
-                </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-bold" for="fecha-limite">Fecha límite:</label>
+                        <input class="form-control rounded-3 px-3 py-3" type="date" id="fecha-limite">
+                    </div>
 
-                <button type="submit" class="boton">
-                    Agregar tarea
-                </button>
+                    <div class="col-12 d-grid d-md-block">
+                        <button type="submit" class="btn btn-primary rounded-3 fw-bold px-4 py-3">
+                            Agregar tarea
+                        </button>
+                    </div>
+                </div>
             </form>
 
-            <p id="mensaje-tareas" aria-live="polite"></p>
+            <p class="my-4 text-primary fw-bold" id="mensaje-tareas" aria-live="polite"></p>
 
-            <div class="lista-tareas" id="lista-tareas"></div>
+            <div class="vstack gap-3 mt-4" id="lista-tareas"></div>
         </section>
 
-       <section id="contacto" class="bg-primary-subtle text-center py-4">
-    <div class="container">
-        <h2 class="h4 text-primary fw-bold mb-3">
-            Gracias por utilizar TaskFlow
-        </h2>
+        <section id="contacto" class="contacto border-top text-center px-3 py-4">
+            <div class="container">
+                <h2 class="h4 text-primary fw-bold mb-3">
+                    Gracias por utilizar TaskFlow
+                </h2>
 
-        <p class="text-body-secondary mb-0">
-            Proyecto de Programación Web.
-        </p>
-    </div>
-</section>
+                <p class="text-body-secondary mb-0">
+                    Proyecto de Programación Web.
+                </p>
+            </div>
+        </section>
 
-        <input type="date" id="calendario-principal" aria-label="Seleccionar una fecha en el calendario" tabindex="-1">
+        <input type="date" id="calendario-principal" class="position-fixed opacity-0 pe-none p-0 border-0"
+            aria-label="Seleccionar una fecha en el calendario" tabindex="-1">
     </main>
 
-    <footer class="bg-dark text-white text-center py-3">
-    <div class="container">
-        <p class="mb-0">
-            TaskFlow - Proyecto de Programación
-        </p>
-    </div>
-</footer>
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous"
-></script>
+    <footer class="pie-pagina text-body-secondary text-center p-4">
+        <div class="container">
+            <p class="mb-0">
+                TaskFlow - Proyecto de Programación
+            </p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
