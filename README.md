@@ -1,153 +1,139 @@
 # TaskFlow
 
-## Descripción del proyecto
-
-TaskFlow es una página web diseñada para organizar y visualizar tareas de manera sencilla.
-
-El proyecto permite visualizar tareas pendientes y completadas, acceder a diferentes secciones mediante un menú de navegación y seleccionar fechas desde un calendario básico.
-
-La página fue desarrollada utilizando HTML5 y CSS3, aplicando técnicas de diseño responsive para adaptarse a computadoras, tablets y celulares.
-
 ## Integrantes
 
 - Santiago Juarez
-- Santiago Acosta 
+- Santiago Acosta
+
+## Descripción del proyecto
+
+TaskFlow es una página web para organizar tareas de manera sencilla.
+Permite agregar tareas con nombre, descripción y fecha límite,tambien podemos marcarlas como completadas o pendientes y eliminarlas.
+Las tareas no se guardan de forma permanente: al recargar la página se pierden.
 
 ## Tecnologías utilizadas
 
-- HTML5: utilizado para crear la estructura y el contenido de la página.
-- CSS3: utilizado para aplicar estilos, colores, tipografías y diseños.
-- Flexbox: utilizado para organizar y alinear elementos.
-- CSS Grid: utilizado para distribuir las tarjetas de tareas.
-- Media Queries: utilizadas para adaptar el diseño a diferentes pantallas.
-- Git: utilizado para el control de versiones del proyecto.
-- GitHub: utilizado para almacenar el repositorio y trabajar de manera colaborativa.
-- Visual Studio Code: editor utilizado para desarrollar el proyecto.
-
-## Funcionalidades implementadas
-
-- Página de inicio con presentación de TaskFlow.
-- Menú de navegación con enlaces a las secciones.
-- Visualización de tareas pendientes y completadas.
-- Tarjetas con títulos, descripciones y estados.
-- Calendario básico para seleccionar fechas.
-- Sección de contacto informativa.
-- Diseño adaptable a diferentes tamaños de pantalla.
+- HTML
+- CSS
+- JavaScript
+- Git y GitHub
+- Visual Studio Code
 
 ## Estructura del proyecto
 
-```text
 taskflow/
+├── img/
+│   └── .gitkeep
 ├── index.html
 ├── style.css
+├── script.js
 └── README.md
-```
 
-La carpeta `img/` se incorporará si se utilizan imágenes en el proyecto.
+La carpeta img está preparada para incorporar imágenes. El archivo .gitkeep permite conservar la carpeta en Git aunque no tenga imágenes.
 
 ## ¿Dónde utilizamos Flexbox?
 
-Utilizamos Flexbox en el encabezado de la página, mediante la clase `.encabezado`, para organizar el título TaskFlow y el menú de navegación.
+Utilizamos Flexbox en el encabezado, mediante la clase .encabezado, para distribuir el título y el menú de navegación.
 
-También lo utilizamos en `.navegacion` y `.presentacion` para distribuir y alinear los elementos.
+También lo utilizamos en .navegacion para organizar los enlaces.
 
-Propiedades utilizadas:
+Aplicamos propiedades como:
 
-- `display: flex`
-- `justify-content`
-- `align-items`
-- `flex-direction`
-- `gap`
-- `flex-wrap`
+- display: flex.
+- justify-content.
+- align-items.
+- flex-wrap.
+- flex-direction.
+- gap.
 
 ## ¿Dónde utilizamos CSS Grid?
 
-Utilizamos CSS Grid en la sección "Mis tareas", mediante la clase `.lista-tareas`.
+Utilizamos Grid en .lista-tareas para distribuir las tarjetas.
 
-Grid permite organizar las tarjetas en columnas y mantener una separación uniforme entre ellas.
+La cantidad de columnas se adapta automáticamente al espacio disponible mediante:
 
-En computadoras se muestran tres columnas, en tablets dos columnas y en celulares una columna.
+grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
 
-Propiedades utilizadas:
-
-- `display: grid`
-- `grid-template-columns`
-- `repeat()`
-- `minmax()`
-- `gap`
+También utilizamos gap para separar las tarjetas.
 
 ## ¿Qué variables CSS creamos?
 
-Definimos variables CSS dentro de `:root` para mantener organizados los colores y espaciados del proyecto.
+Definimos estas variables dentro de :root:
 
-Variables utilizadas:
+- --color-principal.
+- --color-secundario.
+- --color-fondo.
+- --color-texto.
+- --color-blanco.
+- --color-verde.
+- --color-rojo.
 
-- `--color-principal`
-- `--color-secundario`
-- `--color-fondo`
-- `--color-tarjeta`
-- `--color-texto`
-- `--color-texto-suave`
-- `--color-borde`
-- `--color-pendiente`
-- `--color-completada`
-- `--espaciado`
-
-Estas variables se reutilizan mediante la función `var()`.
+Las reutilizamos mediante var() para aplicar colores en fondos, textos, botones y bordes.
 
 ## ¿Cómo implementamos el Responsive Design?
 
-Implementamos Responsive Design utilizando Media Queries para adaptar la página a distintos tamaños de pantalla.
+Utilizamos:
 
-- **Computadoras:** las tareas se organizan en tres columnas.
-- **Tablets (hasta 900px):** las tareas se organizan en dos columnas.
-- **Celulares (hasta 600px):** las tareas se muestran en una sola columna y el encabezado cambia su distribución.
+- La etiqueta meta viewport en el HTML.
+- Flexbox con flex-wrap para permitir que los elementos pasen a otra línea.
+- Grid para adaptar las columnas de tareas al espacio disponible.
+- Una Media Query de hasta 600px para colocar el encabezado en columna y reducir los espaciados.
+- Anchos porcentuales y max-width para adaptar los campos y limitar el ancho del contenido.
+- clamp() con rem y vw para adaptar el tamaño del título principal de la presentación.
 
-También utilizamos unidades relativas como `%`, `rem`, `vh`, `vw` y `fr` para conseguir un diseño flexible.
+## Box Model y unidades
 
-## Box Model
+Aplicamos margin, padding, border y box-sizing: border-box.
 
-Aplicamos propiedades del modelo de caja para controlar los espacios y tamaños de los elementos.
+Utilizamos diferentes unidades:
 
-Utilizamos `margin`, `padding`, `border` y `box-sizing`.
+- px para bordes, espaciados y anchos máximos.
+- % para anchos y espaciados.
+- rem para tamaños de texto.
+- vh para la altura mínima del body.
+- vw para el tamaño adaptable del título.
+- fr para distribuir el espacio de las columnas de Grid.
 
-También incorporamos bordes redondeados y sombras en las tarjetas para mejorar la presentación visual.
+También incorporamos tipografía Arial, colores, bordes redondeados y sombras.
 
 ## HTML semántico
 
-Organizamos el contenido utilizando etiquetas semánticas como:
+Utilizamos las etiquetas:
 
-- `header`: encabezado de la página.
-- `nav`: menú de navegación.
-- `main`: contenido principal.
-- `section`: división del contenido en secciones.
-- `article`: representación de cada tarea.
-- `footer`: pie de página.
+- header.
+- nav.
+- main.
+- section.
+- footer.
 
-## Gestión del proyecto con Git y GitHub
+Cada tarea se representa mediante un article creado desde JavaScript.
 
-El proyecto se desarrolla de manera colaborativa utilizando Git y GitHub.
+## Funcionalidades
 
-Se utilizan las siguientes ramas:
+- Agregar tareas con nombre, descripción y fecha límite.
+- Marcar tareas como completadas.
+- Volver a marcar tareas como pendientes.
+- Eliminar tareas.
+- Abrir un selector de fechas desde el menú.
+- Mostrar mensajes de confirmación.
 
-- `main`: rama principal del proyecto.
-- `dev`: rama de integración del desarrollo.
-- `feature/estructura-html`: desarrollo de la estructura HTML.
-- `feature/diseno-responsive`: desarrollo de los estilos y el diseño responsive.
+El selector de fechas del menú no filtra las tareas.
 
-Los cambios se registran mediante commits descriptivos y se integran mediante Pull Requests y merges, según el flujo de trabajo del equipo.
+## Organización con Git y GitHub
 
-## ¿Cómo ejecutar el proyecto?
+El proyecto utiliza el siguiente flujo de trabajo:
 
-1. Descargar o clonar el repositorio desde GitHub.
+- main para la versión final.
+- dev para integrar el desarrollo.
+- Ramas feature para trabajar en cambios específicos.
+- Commits con mensajes descriptivos.
+- Push para subir los cambios.
+- Pull Requests para solicitar la revisión de un compañero.
+- Merge para integrar los cambios revisados.
+
+## Cómo ejecutar el proyecto
+
+1. Descargar o clonar el repositorio.
 2. Abrir la carpeta del proyecto en Visual Studio Code.
-3. Abrir el archivo `index.html` en un navegador o mediante Live Server.
-4. Navegar por las diferentes secciones de TaskFlow.
-
-## Estado actual
-
-El proyecto cuenta con una estructura HTML semántica, estilos CSS externos, tarjetas de tareas, un selector de fechas y reglas de diseño responsive.
-
-Las tareas mostradas son ejemplos estáticos. Actualmente no se pueden agregar, editar ni eliminar tareas dinámicamente.
-
-El proyecto podrá ampliarse posteriormente utilizando JavaScript o React para incorporar nuevas funcionalidades.
+3. Abrir index.html en el navegador o utilizar Live Server.
+4. Agregar tareas para probar las funcionalidades.
