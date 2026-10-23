@@ -1,58 +1,128 @@
+/* Personalización del tema de Bootstrap */
 
-/*
-:root {
-    --color-principal: #5b4bdb;
-    --color-secundario: #4033a8;
-    --color-fondo: #f4f5fb;
-    --color-tarjeta: #ffffff;
-    --color-texto: #25263a;
-    --color-texto-suave: #686b80;
-    --color-borde: #e1e3ee;
-    --color-pendiente: #fff0d6;
-    --color-completada: #d9f7e8;
-    --espaciado: 1rem;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
+[data-bs-theme="dark"] {
+    --bs-primary-rgb: 167, 139, 250;
+    --bs-body-bg: #09090d;
+    --bs-body-color: #f2eef8;
+    --bs-secondary-color: #b9b1c6;
+    --bs-border-color: #35283f;
 }
 
 body {
+    background:
+        radial-gradient(
+            ellipse at top right,
+            #29133d,
+            transparent 45%
+        ),
+        var(--bs-body-bg);
     font-family: Arial, sans-serif;
+}
+
+.navegacion-principal,
+.pie-pagina {
+    background: #100d16;
+}
+
+.presentacion {
+    min-height: 350px;
+    background:
+        radial-gradient(
+            ellipse at top,
+            #7037a344,
+            transparent 65%
+        ),
+        repeating-linear-gradient(
+            135deg,
+            transparent 0 38px,
+            #a78bfa06 38px 39px
+        );
+}
+
+.btn-primary {
+    --bs-btn-bg: #7c3aed;
+    --bs-btn-border-color: #b18aff;
+    --bs-btn-hover-bg: #6d28d9;
+    --bs-btn-hover-border-color: #a78bfa;
+    --bs-btn-active-bg: #6025b5;
+    --bs-btn-active-border-color: #a78bfa;
+    --bs-btn-focus-shadow-rgb: 167, 139, 250;
+}
+
+#formulario-tarea,
+.tarjeta {
+    background: #141219;
+}
+
+.form-control:focus {
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 0.25rem #a78bfa40;
+}
+
+.contacto {
+    background: linear-gradient(135deg, #1d1229, #100d16);
+}
+
+#calendario-principal {
+    width: 1px;
+    height: 1px;
+}
+
+@media (max-width: 576px) {
+    .presentacion {
+        min-height: 280px;
+    }
+}
+
+/* CSS del TP 2 conservado como referencia y desactivado.
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-principal: #4f46e5;
+    --color-secundario: #eef2ff;
+    --color-fondo: #f5f7ff;
+    --color-texto: #1f2937;
+    --color-blanco: #ffffff;
+    --color-verde: #198754;
+    --color-rojo: #dc3545;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
     background-color: var(--color-fondo);
     color: var(--color-texto);
+    font-family: Arial, sans-serif;
     line-height: 1.6;
-    font-size: 16px;
 }
 
 .encabezado {
-    background-color: var(--color-principal);
-    color: white;
-    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 18px 7%;
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
 }
 
 .encabezado h1 {
+    margin: 0;
     font-size: 1.8rem;
 }
 
 .navegacion {
     display: flex;
-    gap: 1.5rem;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .navegacion a {
-    color: white;
+    color: var(--color-blanco);
     text-decoration: none;
     font-weight: bold;
 }
@@ -62,249 +132,213 @@ body {
 }
 
 .presentacion {
-    min-height: 45vh;
-    padding: 4rem 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 65px 20px;
     text-align: center;
-    gap: 1rem;
-    background: linear-gradient(135deg, #e8e5ff, #f4f5fb);
+    background: linear-gradient(135deg, #e0e7ff, #f5f7ff);
 }
 
 .presentacion h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    margin-top: 0;
     color: var(--color-principal);
+    font-size: clamp(1.6rem, 4vw, 2rem);
 }
 
 .presentacion p {
-    color: var(--color-texto-suave);
-    font-size: 1.1rem;
+    margin-bottom: 25px;
 }
 
 .boton {
     display: inline-block;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 8px;
     background-color: var(--color-principal);
-    color: white;
+    color: var(--color-blanco);
     text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    margin-top: 0.5rem;
-    transition: background-color 0.2s;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .boton:hover {
-    background-color: var(--color-secundario);
+    background-color: #3730a3;
 }
 
 .seccion-tareas {
-    padding: 4rem 5%;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 30px;
 }
 
-.seccion-tareas h2,
-.contacto h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+.seccion-tareas h2 {
+    color: var(--color-principal);
 }
 
 .descripcion {
-    color: var(--color-texto-suave);
-    margin-bottom: 2rem;
+    color: #6b7280;
+}
+
+#formulario-tarea {
+    margin: 25px 0;
+    padding: 25px;
+    background-color: var(--color-blanco);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+#formulario-tarea > div {
+    margin-bottom: 18px;
+}
+
+#formulario-tarea label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+#formulario-tarea input {
+    width: 100%;
+    max-width: 450px;
+    padding: 11px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font: inherit;
+}
+
+#formulario-tarea input:focus {
+    outline: 2px solid var(--color-principal);
+    border-color: var(--color-principal);
 }
 
 .lista-tareas {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 20px;
+    margin-top: 25px;
 }
 
 .tarjeta {
-    background-color: var(--color-tarjeta);
-    padding: 1.5rem;
-    border: 1px solid var(--color-borde);
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(30, 35, 70, 0.08);
-    min-width: 0;
+    padding: 22px;
+    background-color: var(--color-blanco);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     overflow-wrap: anywhere;
-    transition: transform 0.2s;
-}
-
-.tarjeta:hover {
-    transform: translateY(-4px);
 }
 
 .tarjeta h3 {
-    margin: 1rem 0 0.5rem;
-    font-size: 1.2rem;
-}
-
-.tarjeta p {
-    color: var(--color-texto-suave);
+    margin-top: 12px;
 }
 
 .etiqueta {
     display: inline-block;
-    padding: 0.3rem 0.7rem;
-    border-radius: 2rem;
+    padding: 5px 12px;
+    border-radius: 20px;
     font-size: 0.85rem;
     font-weight: bold;
 }
 
+.tarea-pendiente {
+    border-left: 5px solid #f59e0b;
+}
+
 .tarea-pendiente .etiqueta {
-    background-color: var(--color-pendiente);
-    color: #865400;
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.tarea-completada {
+    border-left: 5px solid var(--color-verde);
 }
 
 .tarea-completada .etiqueta {
-    background-color: var(--color-completada);
-    color: #176b48;
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.boton-estado,
+.boton-eliminar {
+    margin: 8px 6px 8px 0;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 6px;
+    color: var(--color-blanco);
+    cursor: pointer;
+    font: inherit;
+}
+
+.boton-estado {
+    background-color: var(--color-verde);
+}
+
+.boton-estado:hover {
+    background-color: #146c43;
+}
+
+.boton-eliminar {
+    background-color: var(--color-rojo);
+}
+
+.boton-eliminar:hover {
+    background-color: #b02a37;
+}
+
+.fecha-tarea {
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+#mensaje-tareas {
+    margin: 15px 0;
+    font-weight: bold;
 }
 
 .contacto {
-    padding: 3rem 5%;
+    padding: 25px 20px;
     text-align: center;
-    background-color: #e8e5ff;
-}
-
-.contacto p {
-    margin-top: 0.5rem;
+    background-color: var(--color-secundario);
 }
 
 .pie-pagina {
-    background-color: var(--color-texto);
-    color: white;
+    padding: 18px;
+    background-color: #1f2937;
+    color: var(--color-blanco);
     text-align: center;
-    padding: 1.5rem;
 }
 
-@media (max-width: 900px) {
-    .lista-tareas {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .encabezado {
-        padding: 1rem 4%;
-    }
-
-    .navegacion {
-        gap: 1rem;
-    }
+#calendario-principal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 
 @media (max-width: 600px) {
     .encabezado {
         flex-direction: column;
         text-align: center;
+        padding: 18px;
     }
 
     .navegacion {
         justify-content: center;
-        gap: 0.75rem 1rem;
+        gap: 15px;
     }
 
     .presentacion {
-        min-height: 35vh;
-        padding: 3rem 5%;
+        padding: 40px 18px;
     }
 
     .seccion-tareas {
-        padding: 2.5rem 5%;
+        margin: 15px auto;
+        padding: 18px;
     }
 
-    .lista-tareas {
-        grid-template-columns: 1fr;
-    }
-
-    .tarjeta {
-        padding: 1.25rem;
-    }
-
-    .seccion-tareas h2,
-    .contacto h2 {
-        font-size: 1.6rem;
+    #formulario-tarea {
+        padding: 18px;
     }
 }
-
-.calendario {
-    padding: 3rem 5%;
-    text-align: center;
-    min-height: 40vh;
-}
-
-.calendario h2 {
-    color: var(--color-principal);
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.calendario p {
-    color: var(--color-texto-suave);
-    margin-bottom: 1.5rem;
-}
-
-.contenedor-calendario {
-    background-color: var(--color-tarjeta);
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 2rem;
-    border: 1px solid var(--color-borde);
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(30, 35, 70, 0.08);
-}
-
-.contenedor-calendario label {
-    display: block;
-    margin-bottom: 1rem;
-    font-weight: bold;
-}
-
-.contenedor-calendario input {
-    max-width: 100%;
-    padding: 0.7rem;
-    border: 1px solid var(--color-borde);
-    border-radius: 0.5rem;
-    font: inherit;
-}*/
-
-body {
-    background-color: #f8f9fc;
-    color: #212529;
-    font-family: Arial, sans-serif;
-}
-.encabezado {
-    background-color: #343a70;
-}
-.presentacion {
-    min-height: 350px;
-    background: linear-gradient(135deg, #343a70, #7279c7);
-    color: white;
-}
-.navbar .nav-link {
-    transition: color 0.3s ease;
-}
-
-.navbar .nav-link:hover {
-    color: #d6d9ff;
-}
-.card {
-    border-radius: 12px;
-    transition: transform 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-}
-
-#calendario input {
-    cursor: pointer;
-}
-
-@media (max-width: 576px) {
-    .presentacion {
-        min-height: 280px;
-    }
-}
+*/
