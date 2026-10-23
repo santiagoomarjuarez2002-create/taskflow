@@ -20,7 +20,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
 }
-
+/* 
 .encabezado {
     display: flex;
     justify-content: space-between;
@@ -52,7 +52,7 @@ body {
 .navegacion a:hover {
     text-decoration: underline;
 }
-
+ */
 .presentacion {
     padding: 65px 20px;
     text-align: center;
