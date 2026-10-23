@@ -1,78 +1,6 @@
-
-/* Formulario para agregar tareas */
-#formulario-tarea {
-    margin: 25px 0;
-}
-
-#formulario-tarea > div {
-    margin-bottom: 15px;
-}
-
-#formulario-tarea label {
-    display: block;
-    margin-bottom: 6px;
-}
-
-#formulario-tarea input {
+* {
     box-sizing: border-box;
-    width: 100%;
-    max-width: 400px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font: inherit;
 }
-
-#formulario-tarea button {
-    cursor: pointer;
-}
-
-/* Botones de las tareas */
-.boton-estado,
-.boton-eliminar {
-    margin: 8px 6px 8px 0;
-    padding: 9px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font: inherit;
-}
-
-.boton-estado {
-    background-color: #198754;
-    color: white;
-}
-
-.boton-eliminar {
-    background-color: #dc3545;
-    color: white;
-}
-
-/* Fecha límite de cada tarea */
-.fecha-tarea {
-    font-size: 0.95rem;
-}
-
-/* Mensajes de confirmación */
-#mensaje-tareas {
-    margin: 15px 0;
-}
-
-/* Selector de fecha abierto desde el menú */
-#calendario-principal {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    border: 0;
-    opacity: 0;
-    pointer-events: none;
-}
-
-
-/* ===== DISEÑO GENERAL DE TASKFLOW ===== */
 
 :root {
     --color-principal: #4f46e5;
@@ -86,13 +14,13 @@
 
 body {
     margin: 0;
+    min-height: 100vh;
     background-color: var(--color-fondo);
     color: var(--color-texto);
     font-family: Arial, sans-serif;
     line-height: 1.6;
 }
-
-/* Encabezado y menú */
+/* 
 .encabezado {
     display: flex;
     justify-content: space-between;
@@ -124,8 +52,7 @@ body {
 .navegacion a:hover {
     text-decoration: underline;
 }
-
-/* Presentación principal */
+ */
 .presentacion {
     padding: 65px 20px;
     text-align: center;
@@ -135,14 +62,13 @@ body {
 .presentacion h2 {
     margin-top: 0;
     color: var(--color-principal);
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 4vw, 2rem);
 }
 
 .presentacion p {
     margin-bottom: 25px;
 }
 
-/* Botones principales */
 .boton {
     display: inline-block;
     padding: 11px 20px;
@@ -159,7 +85,6 @@ body {
     background-color: #3730a3;
 }
 
-/* Sección de tareas */
 .seccion-tareas {
     max-width: 1000px;
     margin: 35px auto;
@@ -174,7 +99,6 @@ body {
     color: #6b7280;
 }
 
-/* Formulario */
 #formulario-tarea {
     margin: 25px 0;
     padding: 25px;
@@ -194,7 +118,6 @@ body {
 }
 
 #formulario-tarea input {
-    box-sizing: border-box;
     width: 100%;
     max-width: 450px;
     padding: 11px;
@@ -208,7 +131,6 @@ body {
     border-color: var(--color-principal);
 }
 
-/* Lista y tarjetas de tareas */
 .lista-tareas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
@@ -254,14 +176,13 @@ body {
     color: #065f46;
 }
 
-/* Botones de cada tarea */
 .boton-estado,
 .boton-eliminar {
     margin: 8px 6px 8px 0;
     padding: 9px 12px;
     border: none;
     border-radius: 6px;
-    color: white;
+    color: var(--color-blanco);
     cursor: pointer;
     font: inherit;
 }
@@ -287,13 +208,11 @@ body {
     color: #6b7280;
 }
 
-/* Mensajes */
 #mensaje-tareas {
     margin: 15px 0;
     font-weight: bold;
 }
 
-/* Contacto y pie de página */
 .contacto {
     padding: 25px 20px;
     text-align: center;
@@ -307,7 +226,6 @@ body {
     text-align: center;
 }
 
-/* Selector de fecha del menú */
 #calendario-principal {
     position: fixed;
     left: 50%;
@@ -320,7 +238,6 @@ body {
     pointer-events: none;
 }
 
-/* Adaptación para celulares */
 @media (max-width: 600px) {
     .encabezado {
         flex-direction: column;
@@ -335,10 +252,6 @@ body {
 
     .presentacion {
         padding: 40px 18px;
-    }
-
-    .presentacion h2 {
-        font-size: 1.6rem;
     }
 
     .seccion-tareas {
